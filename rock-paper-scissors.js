@@ -9,8 +9,6 @@ Write a new function called game() that will call the playRound that keeps the s
 
 let playerScore = 0;
 let computerScore = 0;
-let playerSelection = (prompt("Choose one (Rock, Paper or Scissors): ")).toLowerCase();
-let computerSelection = getComputerChoice();
 
 /*
 Function that will choose a random choice for the computer.
@@ -65,5 +63,16 @@ function playRound(pSelection, cSelection) {
     return message;
 }
 
+function game() {
 
+    for (let i = 1; i <= 5; i++) {
+        let playerSelection = (prompt("Choose one (Rock, Paper or Scissors): ")).toLowerCase();
+        let computerSelection = getComputerChoice();
+        console.log("Round " + i);
+        console.log(playerSelection);
+        console.log(computerSelection);
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
 
+console.log(game());
