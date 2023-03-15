@@ -46,16 +46,22 @@ function playRound(pSelection, cSelection) {
         message = "It's a tie";
     } else if (pSelection === "rock" && cSelection === "scissors") {
         message = "You Win! Rock beats Scissors";
+        playerScore++;
     } else if (pSelection === "rock" && cSelection === "paper") {
         message = "You Lose! Paper beats Rock";
+        computerScore++;
     } else if (pSelection === "paper" && cSelection === "rock") {
         message = "You Win! Paper beats Rock";
+        playerScore++;
     } else if (pSelection === "paper" && cSelection === "scissors") {
         message = "You Lose! Scissors beats Paper";
+        computerScore++;
     } else if (pSelection === "scissors" && cSelection === "paper") {
         message = "You Win! Scissors beats Paper";
+        playerScore++;
     } else if (pSelection === "scissors" && cSelection === "rock") {
         message = "You Lose! Rock beats Scissors";
+        computerScore++;
     } else {
         message = "PLEASE ENTER A VALID CHOICE";
     }
@@ -69,9 +75,18 @@ function game() {
         let playerSelection = (prompt("Choose one (Rock, Paper or Scissors): ")).toLowerCase();
         let computerSelection = getComputerChoice();
         console.log("Round " + i);
-        console.log(playerSelection);
-        console.log(computerSelection);
-        console.log(playRound(playerSelection, computerSelection));
+        console.log("Player: " + playerSelection);
+        console.log("Computer: " + computerSelection);
+        console.log("Round Result: " + playRound(playerSelection, computerSelection));
+        console.log("Player Score: " + playerScore + "\tComputer Score: " + computerScore);
+    }
+
+    if (playerScore > computerScore) {
+        return "Result: Player Won!";
+    } else if (playerScore < computerScore) {
+        return "Result: Computer won!";
+    } else if (playerScore === computerScore) {
+        return "Result: It's a draw!";
     }
 }
 
