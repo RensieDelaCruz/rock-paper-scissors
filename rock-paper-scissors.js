@@ -37,4 +37,33 @@ function getComputerChoice() {
 }
 
 
+/*
+Function that will play one round of rock-paper-scissors
+*/
+function playRound(pSelection, cSelection) {
+
+    let message;
+
+    if ((pSelection === "rock" && cSelection === "rock") || (pSelection === "paper" && cSelection === "paper") || (pSelection === "scissors" && cSelection === "scissors")) {
+        message = "It's a tie";
+    } else if (pSelection === "rock" && cSelection === "scissors") {
+        message = "You Win! Rock beats Scissors";
+    } else if (pSelection === "rock" && cSelection === "paper") {
+        message = "You Lose! Paper beats Rock";
+    } else if (pSelection === "paper" && cSelection === "rock") {
+        message = "You Win! Paper beats Rock";
+    } else if (pSelection === "paper" && cSelection === "scissors") {
+        message = "You Lose! Scissors beats Paper";
+    } else if (pSelection === "scissors" && cSelection === "paper") {
+        message = "You Win! Scissors beats Paper";
+    } else if (pSelection === "scissors" && cSelection === "rock") {
+        message = "You Lose! Rock beats Scissors";
+    } else {
+        message = "PLEASE ENTER A VALID CHOICE";
+    }
+
+    return message;
+}
+
+
 
