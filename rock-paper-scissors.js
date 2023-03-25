@@ -1,11 +1,9 @@
-/*
-Create a counter for both player's and computer's score
-Get an input from the user
-Get a random choice from the computer from function getComputerChoice
-Compare the 2 choices in a function called playRound
-playRound should return the winner of that round
-Write a new function called game() that will call the playRound that keeps the score and reports a winner or loser at the end
-*/
+const containerDiv = document.querySelector('#container');
+
+const buttons = document.querySelectorAll('.buttonContainer button');
+buttons.forEach((button) => {
+    button.addEventListener('click', game);
+});
 
 let playerScore = 0;
 let computerScore = 0;
@@ -69,25 +67,44 @@ function playRound(pSelection, cSelection) {
     return message;
 }
 
-function game() {
+function game(e) {
+    let playerSelection = e.target.id;
+    let computerSelection = getComputerChoice();
 
-    for (let i = 1; i <= 5; i++) {
-        let playerSelection = (prompt("Choose one (Rock, Paper or Scissors): ")).toLowerCase();
-        let computerSelection = getComputerChoice();
-        console.log("Round " + i);
-        console.log("Player: " + playerSelection);
-        console.log("Computer: " + computerSelection);
-        console.log("Round Result: " + playRound(playerSelection, computerSelection));
-        console.log("Player Score: " + playerScore + "\tComputer Score: " + computerScore);
-    }
+    const buttonContainer = document.querySelector('.buttonContainer');
+    const playerDiv = document.querySelector('#playerSelection');
+    const computerDiv = document.querySelector('#computerSelection');
+    const roundResultDiv = document.querySelector('#roundResult');
+    const playerScoreDiv = document.querySelector('#playerScore');
+    const computerScoreDiv = document.querySelector('#computerScore');
 
-    if (playerScore > computerScore) {
-        return "Result: Player Won!";
-    } else if (playerScore < computerScore) {
-        return "Result: Computer won!";
-    } else if (playerScore === computerScore) {
-        return "Result: It's a draw!";
+    const finalResultDiv = document.createElement('div');
+
+    playerDiv.textContent = `Player: ${playerSelection}`;
+    computerDiv.textContent = `Computer: ${computerSelection}`;
+    roundResultDiv.textContent = `Round Result: ${playRound(playerSelection, computerSelection)}`;
+    playerScoreDiv.textContent = `Player Score: ${playerScore}`;
+    computerScoreDiv.textContent = `Computer Score: ${computerScore}`;
+
+    if (playerScore === 5) {
+        finalResultDiv.textContent = 'You Won! Lesssgoooo!';
+        containerDiv.appendChild(finalResultDiv);
+        containerDiv.removeChild(buttonContainer);
+        tryAgain();
+    } else if (computerScore === 5) {
+        finalResultDiv.textContent = 'You Lose! Huhu, better luck next time!';
+        containerDiv.appendChild(finalResultDiv);
+        containerDiv.removeChild(buttonContainer);
+        tryAgain();
     }
 }
 
-console.log(game());
+function tryAgain() {
+    const tryAgainButton = document.createElement('button');
+    tryAgainButton.textContent = 'Try Again';
+    tryAgainButton.addEventListener('click', () => {
+        document.location.reload();
+    });
+    containerDiv.appendChild(tryAgainButton);
+}
+
