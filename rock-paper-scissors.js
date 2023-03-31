@@ -72,24 +72,22 @@ function game(e) {
     displayChoice(computerSelection, computerPhotoContainer, computerChoicePhoto);
 
     const buttonContainer = document.querySelector('.buttonContainer');
-    const roundResultDiv = document.querySelector('#roundResult');
+    const resultDiv = document.querySelector('#result');
     const playerScoreDiv = document.querySelector('#playerScore');
     const computerScoreDiv = document.querySelector('#computerScore');
 
     const finalResultDiv = document.createElement('div');
 
-    roundResultDiv.textContent = `${playRound(playerSelection, computerSelection)}`;
-    playerScoreDiv.textContent = `Player Score: ${playerScore}`;
-    computerScoreDiv.textContent = `Computer Score: ${computerScore}`;
+    resultDiv.textContent = `${playRound(playerSelection, computerSelection)}`;
+    playerScoreDiv.textContent = `Score: ${playerScore}`;
+    computerScoreDiv.textContent = `Score: ${computerScore}`;
 
     if (playerScore === 5) {
-        finalResultDiv.textContent = 'You Won! Lesssgoooo!';
-        containerDiv.appendChild(finalResultDiv);
+        resultDiv.textContent = 'You Won! Lesssgoooo!';
         containerDiv.removeChild(buttonContainer);
         tryAgain();
     } else if (computerScore === 5) {
-        finalResultDiv.textContent = 'You Lose! Huhu, better luck next time!';
-        containerDiv.appendChild(finalResultDiv);
+        resultDiv.textContent = 'Loser! Better luck next time';
         containerDiv.removeChild(buttonContainer);
         tryAgain();
     }
@@ -98,6 +96,8 @@ function game(e) {
 function tryAgain() {
     const tryAgainButton = document.createElement('button');
     tryAgainButton.textContent = 'Try Again';
+    tryAgainButton.style.alignSelf = 'center';
+    tryAgainButton.style.marginTop = '20px';
     tryAgainButton.addEventListener('click', () => {
         document.location.reload();
     });
