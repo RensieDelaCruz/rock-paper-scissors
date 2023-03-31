@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <script src="rock-paper-scissors.js" defer></script>
-        <title>Rock Paper Scissors</title>
-    </head>
-    <body>
-        <div id="container">
-            <h1>Rock Paper and Scissors Game</h1>
-            <div id="playerSelection">Player:</div>
-            <div id="computerSelection">Computer</div>
-            <div id="roundResult">Round Result:</div>
-            <div id="playerScore">Player Score:</div>
-            <div id="computerScore">Computer Score:</div>
-            <div class="buttonContainer">
-                <button id="rock">Rock</button>
-                <button id="paper">Paper</button>
-                <button id="scissors">Scissors</button>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="rock-paper-scissors.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Rock Paper Scissors</title>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Rock Paper and Scissors Game</h1>
+    </div>
+    <div id="container">
+        <div class="selections">
+            <div class="choice-container">
+                <div id="playerSelection">Player</div>
+                <div id="player" class="photo-container">
+                    <div class="player-choice-photo"></div>
+                </div>
+            </div>
+            <div class="vs">VS</div>
+            <div class="choice-container">
+                <div id="computerSelection">Computer</div>
+                <div id="computer" class="photo-container">
+                    <div class="computer-choice-photo"></div>
+                </div>
             </div>
         </div>
-    </body>
+        <div id="roundResult"></div>
+        <div id="playerScore">Player Score:</div>
+        <div id="computerScore">Computer Score:</div>
+        <div class="buttonContainer">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissors">Scissors</button>
+        </div>
+    </div>
+</body>
+
 </html>
