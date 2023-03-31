@@ -1,0 +1,92 @@
+#container {
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(196, 196, 196);
+    color: rgb(143, 10, 10);
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0px;
+    background-color: rgb(78, 77, 77);
+    color: rgb(241, 50, 50);
+}
+
+h1 {
+    padding: 10px;
+    border: 5px solid rgb(241, 50, 50);
+    border-radius: 10px;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.selections {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.vs {
+    align-self: center;
+    font-size: 45px;
+}
+
+.choice-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+    width: 20%;
+    height: auto;
+}
+
+.photo-container {
+    width: 200px;
+    height: 200px;
+    border: 5px solid rgb(143, 10, 10);
+    border-radius: 5px;
+}
+
+#result {
+    padding: 10px 0;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    height: 50px;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+}
+
+button {
+    background-color: rgb(78, 77, 77);
+    color: rgb(252, 74, 74);
+    font-size: 30px;
+    font-weight: bolder;
+    border: 3px solid rgb(241, 50, 50);
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: white;
+    scale: 1.1;
+}
