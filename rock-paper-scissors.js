@@ -42,23 +42,15 @@ function playRound(pSelection, cSelection) {
 
     if ((pSelection === "rock" && cSelection === "rock") || (pSelection === "paper" && cSelection === "paper") || (pSelection === "scissors" && cSelection === "scissors")) {
         message = "It's a tie";
-    } else if (pSelection === "rock" && cSelection === "scissors") {
-        message = "You Win! Rock beats Scissors";
+    } else if ((pSelection === "rock" && cSelection === "scissors")
+        || (pSelection === "paper" && cSelection === "rock")
+        || (pSelection === "scissors" && cSelection === "paper")) {
+        message = `You Win! ${pSelection} beats ${cSelection}`;
         playerScore++;
-    } else if (pSelection === "rock" && cSelection === "paper") {
-        message = "You Lose! Paper beats Rock";
-        computerScore++;
-    } else if (pSelection === "paper" && cSelection === "rock") {
-        message = "You Win! Paper beats Rock";
-        playerScore++;
-    } else if (pSelection === "paper" && cSelection === "scissors") {
-        message = "You Lose! Scissors beats Paper";
-        computerScore++;
-    } else if (pSelection === "scissors" && cSelection === "paper") {
-        message = "You Win! Scissors beats Paper";
-        playerScore++;
-    } else if (pSelection === "scissors" && cSelection === "rock") {
-        message = "You Lose! Rock beats Scissors";
+    } else if ((pSelection === "rock" && cSelection === "paper")
+        || (pSelection === "paper" && cSelection === "scissors")
+        || (pSelection === "scissors" && cSelection === "rock")) {
+        message = `You Lose! ${cSelection} beats ${pSelection}`;
         computerScore++;
     } else {
         message = "PLEASE ENTER A VALID CHOICE";
@@ -71,18 +63,22 @@ function game(e) {
     let playerSelection = e.target.id;
     let computerSelection = getComputerChoice();
 
+    const playerPhotoContainer = document.querySelector('#player.photo-container');
+    const playerChoicePhoto = document.querySelector('.player-choice-photo');
+    const computerPhotoContainer = document.querySelector('#computer.photo-container');
+    const computerChoicePhoto = document.querySelector('.computer-choice-photo');
+
+    displayChoice(playerSelection, playerPhotoContainer, playerChoicePhoto);
+    displayChoice(computerSelection, computerPhotoContainer, computerChoicePhoto);
+
     const buttonContainer = document.querySelector('.buttonContainer');
-    const playerDiv = document.querySelector('#playerSelection');
-    const computerDiv = document.querySelector('#computerSelection');
     const roundResultDiv = document.querySelector('#roundResult');
     const playerScoreDiv = document.querySelector('#playerScore');
     const computerScoreDiv = document.querySelector('#computerScore');
 
     const finalResultDiv = document.createElement('div');
 
-    playerDiv.textContent = `Player: ${playerSelection}`;
-    computerDiv.textContent = `Computer: ${computerSelection}`;
-    roundResultDiv.textContent = `Round Result: ${playRound(playerSelection, computerSelection)}`;
+    roundResultDiv.textContent = `${playRound(playerSelection, computerSelection)}`;
     playerScoreDiv.textContent = `Player Score: ${playerScore}`;
     computerScoreDiv.textContent = `Computer Score: ${computerScore}`;
 
@@ -108,3 +104,24 @@ function tryAgain() {
     containerDiv.appendChild(tryAgainButton);
 }
 
+function displayChoice(choice, parent, child) {
+    const newChoicePhoto = document.createElement('img');
+    const className = child.getAttribute('class');
+
+    if (choice === 'rock') {
+        newChoicePhoto.setAttribute('src', 'images/rock.png');
+        newChoicePhoto.setAttribute('alt', 'emoji photo of a rock');
+        newChoicePhoto.classList.add(className);
+        parent.replaceChild(newChoicePhoto, child);
+    } else if (choice === 'paper') {
+        newChoicePhoto.setAttribute('src', 'images/paper.png');
+        newChoicePhoto.setAttribute('alt', 'emoji photo of a paper');
+        newChoicePhoto.classList.add(className);
+        parent.replaceChild(newChoicePhoto, child);
+    } else if(choice === 'scissors') {
+        newChoicePhoto.setAttribute('src', 'images/scissors.png');
+        newChoicePhoto.setAttribute('alt', 'emoji photo of a scissors');
+        newChoicePhoto.classList.add(className);
+        parent.replaceChild(newChoicePhoto, child);
+    }
+}
